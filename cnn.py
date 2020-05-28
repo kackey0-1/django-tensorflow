@@ -3,7 +3,7 @@ from tensorflow import keras
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D
-from tensorflow.keras.optimizers import SGD
+from tensorflow.keras.optimizers import SGD, Adam
 from tensorflow.python.keras.utils import np_utils
 
 # parameter initialization
@@ -32,10 +32,11 @@ model.add(Dense(256, activation="relu"))
 model.add(Dropout(0.5))
 model.add(Dense(num_classes, activation="softmax"))
 
-opt = SGD(lr=0.01) # Optimizer Samples: rmsprop, adam
-model.compile(loss="categorical_crossentropy", optimizer=opt)
+# opt = SGD(lr=0.01) # Optimizer Samples: rmsprop, adam
+opt = Adam()
+model.compile(loss="categorical_crossentropy", optimizer=opt, metrics=['accuracy'])
 
-model.fit(X_train, y_train, batch_size=32, epochs=10)
+model.fit(X_train, y_train, batch_size=32, epochs=30)
 
 score = model.evaluate(X_test, y_test, batch_size=32)
 

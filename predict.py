@@ -2,6 +2,7 @@ import numpy as np
 from tensorflow import keras
 from tensorflow.keras.models import Sequential, Model, load_model
 from PIL import Image
+import sys
 
 # パラメータの初期化
 classes = ["car", "motorbike"]

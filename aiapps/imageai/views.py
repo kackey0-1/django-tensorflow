@@ -21,6 +21,8 @@ def predict(request):
     predicted, percentage = photo.predict()
     template = loader.get_template('imageai/result.html')
     context = {
+        'photo_name': photo.image.name,
+        'photo_data': photo.image_src(),
         'predicted': predicted.upper,
         'percentage': percentage,
     }

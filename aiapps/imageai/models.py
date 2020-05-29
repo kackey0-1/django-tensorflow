@@ -16,6 +16,13 @@ class Photo(models.Model):
     classes = ["car", "motorbike"]
     num_classes = len(classes)
 
+    def image_src(self):
+        with self.image.open() as img:
+            # base64.b64encode(img.read())するだけだとバイナリ型になってしまう
+            # .decode()してやることで文字列に変換されて、imgタグで表示できるようになる
+            base64_img = base64.b64encode(img.read()).decode()
+            return 'data:' + img.file.content_type + ';base64,' + base64_img
+
     # 引数から画像ファイルを参照して読み込む
     def predict(self):
         model = None

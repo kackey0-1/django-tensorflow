@@ -16,6 +16,7 @@ savedir = "./data/" + keyword
 
 flickr = FlickrAPI(key, secret, format='parsed-json')
 result = flickr.photos.search(
+    text = keyword,
     text_page=400,
     media='photos',
     sort='relevance',

@@ -1,7 +1,7 @@
 .env
 venv/lib/**
-data/**
 *.npy
 venv/bin/__pycache__/**
 *.h5
 __pycache__
+*.jpg

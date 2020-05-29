@@ -13,7 +13,7 @@ class Photo(models.Model):
 
     IMAGE_SIZE = 224 # 画像サイズ
     MODEL_FILE_PATH = './imageai/ml_models/vgg16_transfer.h5' # モデルファイル
-    classes = ["car", "motorbike"]
+    classes = ["car", "motorbike", "other"]
     num_classes = len(classes)
 
     def image_src(self):

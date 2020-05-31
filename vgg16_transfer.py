@@ -8,7 +8,7 @@ from tensorflow.python.keras.utils import np_utils
 from tensorflow.python.keras.applications.vgg16 import VGG16
 
 # parameter initialization
-classes = ['car', 'motorbike']
+classes = ['car', 'motorbike', 'other']
 num_classes = len(classes)
 image_size = 224
 
@@ -40,7 +40,7 @@ opt = Adam(lr=0.0001)
 model.compile(loss="categorical_crossentropy", optimizer=opt, metrics=['accuracy'])
 
 # 固定回数（データセットの反復）の試行でモデルを学習
-model.fit(X_train, y_train, batch_size=32, epochs=17)
+model.fit(X_train, y_train, batch_size=32, epochs=9)
 
 # テストモードにおいて，モデルの損失値と評価値
 score = model.evaluate(X_test, y_test, batch_size=32)

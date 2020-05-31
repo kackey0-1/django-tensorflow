@@ -11,12 +11,11 @@ key       = os.environ.get("FlickrAPI_KEY")
 secret    = os.environ.get("FlickrAPI_SECRET")
 wait_time = 1
 
-keyword = sys.argv[1]
-savedir = "./data/" + keyword
+keyword = None if 2 > len(sys.argv) else sys.argv[1]
 
 flickr = FlickrAPI(key, secret, format='parsed-json')
 result = flickr.photos.search(
-    text = keyword,
+    text=keyword,
     text_page=400,
     media='photos',
     sort='relevance',
@@ -25,6 +24,7 @@ result = flickr.photos.search(
 )
 
 photos = result['photos']
+savedir = "./data/" + keyword if keyword else "./data/other"
 
 for i, photo in enumerate(photos['photo']):
     url_q = photo['url_q']

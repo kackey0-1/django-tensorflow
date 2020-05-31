@@ -4,7 +4,7 @@ import numpy as np
 from sklearn import model_selection
 
 # parameter initialization
-classes = ['car', 'motorbike']
+classes = ['car', 'motorbike', 'other']
 num_classes = len(classes)
 image_size = 224
 
